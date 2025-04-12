@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{%block content%}
+
+<div class="container-a">
+<div class="card mt-3">
+    <div class="content">
+      <p class="heading">رؤية 2030</p>
+      <p class="para">
+        تتحول رؤية السعودية 2030 إلى واقع في مجتمع نابض بالحياة.
+        فالمجتمع المتماسك السعيد هو أهم أسس الازدهار الاقتصادي لمجتمع مواطنه مسؤول، وجذوره راسخة تستند على قيم الإسلام السمحة والفخر بالوطن، مع الاعتزاز بالتراث والثقافة السعودية، في بيئة توفير خيارات ترفيه على مستوى عالمي، ونمط حياة مستدام، وأنظمة رعاية صحية واجتماعية فعالة، حيث تتميز المملكة بثقافتها الغنية، ووحدتها الوطنية وعقيدتها الإسلامية، كما تفخر المملكة على مدار العصور بضيافة الحجاج وإبراز قيمها للعالم.
+        تأتي الرفاهية الصحية والنفسية والاجتماعية في أولويات رؤية السعودية 2030 ولهذا من صميمها أن يتمتع الجميع بجودة حياة عالية وصحية، وبيئة عامرة، من أجل تكوين مجتمع بنيانه متين، مع الالتزام بتعزيز التنمية الاجتماعية من خلال تقوية الروابط الأسرية، وبناء شخصيات قوية من خلال التعليم، وإنشاء أنظمة رعاية صحية واجتماعية متطورة.
+        تسعى رؤية السعودية 2030 من خلال هذه الجهود، إلى الوصول إلى مجتمع حيوي ليكون الأساس لاقتصاد مزدهر ووطن طموح
+      </p>
+    </div>
+</div>
+</div>
+
+<div class="container-b">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-b">
+        <div class="card-body">
+          <h2 class="mb-4">شارك رؤيتك</h2>
+          <form action="{% url 'create' %}" method="POST">
+          {% csrf_token %}
+          <div class="row mt-3">
+            <div class="col">
+              <div class="row">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="form-label" for="name">الاسم :</label>
+                    {{form.name}}
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="input-group">
+                    <label class="form-label" for="name">التخصص الدراسي أو المهني :</label>
+                    {{form.specialization}}
+                    </div> 
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="input-group textarea">
+              <label class="form-label" for="name">ماهي رؤيتك لعام 2030 :</label>
+              {{form.vision_text}}
+              </div>
+            </div>
+          </div>
+          <button type="submit" id="bottone1">إرسال</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="container">
+  <h2 class="mb-4">رؤى الزوّار حول مستقبل السعودية</h2>
+  <div class="card-t">
+  <table class="table table-hover table-striped">
+      <thead>
+          <tr>
+              <th class="col-2">الاسم</th>
+              <th class="col-3">التخصص الدراسي أو المهني</th>
+              <th class="col-7">رؤية 2030</th>
+              <th class="col">إجراء</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for item in futvis %}
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.specialization }}</td>
+              <td>{{ item.vision_text }}</td>
+              <td>
+                <a href="{% url 'edit' id=item.id %}" class="btn btn-sm btn-success"><i class="bi bi-pencil"></i></a></td>
+              <td>
+                <button onclick="deleteitem('{{item.id}}')" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+  </div>
+</div>
+
+<style>
+    .container-a {
+        width: 100%;
+        display:flex;
+        justify-content: center; /* مركز الصف داخل الكونتينر */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+    .card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1000px;
+        padding: 2px;
+        border-radius: 24px;
+        overflow: hidden;
+        line-height: 1.6;
+        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .content {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 34px;
+        border-radius: 22px;
+        color: #F4EFE6;
+        overflow: hidden;
+        background: #ffffff;
+        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      
+      .content .heading {
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 1.3;
+        z-index: 1;
+        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }     
+      .content .para {
+        opacity: 0.8;
+        font-size: 18px;
+        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }    
+      .card::before {
+        content: "";
+        position: absolute;
+        height: 160%;
+        width: 160%;
+        border-radius: inherit;
+        background: #162A2c;
+        transform-origin: center;
+        animation: moving 4.8s linear infinite paused;
+        transition: all 0.88s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      h2 {
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 34px;
+        border-radius: 22px;
+        font-weight: bold;
+        color: #162A2c;
+        overflow: hidden;
+        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .input-group {
+        position: relative;
+        align-items: center;
+        align-content: center;
+        display: flex;
+        margin: 1em 0 1em 0;
+        max-width: 290px;
+       }
+       .input-group input {
+        font-size: 100%;
+        padding: 0.8em;
+        border: 2px solid #d1cfcf;
+        background-color: transparent;
+        width: 100%;
+        border-bottom-right-radius: 15px;
+      }
+
+      .input-group textarea{
+        font-size: 100%;
+        padding: 0.15em;
+        border: 2px solid #d1cfcf;
+        background-color: transparent;
+        width: 100%;
+        border-bottom-right-radius: 15px;
+      }
+      #bottone1 {
+        padding-left: 33px;
+        padding-right: 33px;
+        padding-bottom: 16px;
+        padding-top: 12px;
+        border-radius: 9px;
+        background: #686868;
+        border: none;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.5s;
+       }
+       
+       #bottone1:hover {
+        box-shadow: 7px 5px 56px -14px #162A2c;
+       }
+       
+       #bottone1:active {
+        transform: scale(0.97);
+        box-shadow: 7px 5px 56px -10px #162A2c;
+       }
+</style>
+{% endblock %}

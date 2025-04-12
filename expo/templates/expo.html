@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{%block content%}
+<style>
+    .container {
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+    .card {
+        background-color: #162A2C;
+        padding: 20px;
+        text-align: center;
+        border-radius: 19px;
+        border-color: aliceblue;
+        height: 200px;
+    }
+    .c{
+        background-color: #686867;
+        padding: 20px;
+        text-align: center;
+        border-radius: 19px;
+        border-color: aliceblue;
+        height: 150px;
+    }
+    .card-header {
+        padding: 12px 16px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+    .card-body{
+        color: #FEFCF6;
+        justify-items: center;
+        align-content: center;
+    }
+    h1 {
+        font-weight: bolder;
+        font-size: 2.3rem;
+        color:#162A2C;
+        display:block;
+    }
+    span {
+        font-size: 14px;
+    }
+    p {
+        color:#162A2c;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+        color: #FEFCF6;
+    }
+    .row {
+        display: flex;
+        gap: 30px;
+      }
+    .column {
+        width: 150px;
+        height: 100px;
+        text-align: center;
+    }
+
+</style>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col">
+            <header class="container-fluid justify-content-center mt-2">
+            <h1 class="text-center">الرياض .. اختيار العالم</h1>
+            <div class="text-center mt-4" style="font-size: 19px;">بموضوع رئيس طموح يحاكي ما اعتادت المملكة العربية السعودية على تحقيقه، وموضوعات فرعية تستثمر في الغد؛ <strong>المملكة تفوز باستضافة معرض إكسبو الدولي 2030 في مدينة الرياض،</strong>
+                حيث تسعى إلى تقديم نسخة استثنائية من معارض إكسبو ستترك أثرًا باقيًا في ذاكرة زواره.
+                سيشكل المعرض منصةً فريدةً تستعرض أبرز الابتكارات والتقنيات الحديثة، واسهاماتها في تذليل العقبات التي تواجه الكوكب في مختلف المجالات.</p>
+            </header>
+            <div class="row d-flex justify-content-center mt-5">
+                <div class="col-5">
+                    <div class="card c">
+                        <div class="card-body">
+                            <h2 style="font-size: 33px; font-weight:bold;">ملخص الرياض إكسبو 2030</h2>
+                        </div>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-center align-items-center gap-2" style="color: #FEFCF6; font-size: 18px;">
+                            <i class="bi bi-person-raised-hand" style="font-size: 20px;"></i>
+                            <h5>عدد الزوار المتوقع</h5>
+                        </div>
+                        <div class="card-body">
+                            <span>40 مليون زيارة للموقع,
+                            مليار زيارة عبر الواقع الافتراضي.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-center align-items-center gap-2" style="color: #FEFCF6; font-size: 18px;">
+                            <i class="bi bi-arrows-fullscreen" style="font-size: 20px;"></i>
+                            <h5>المساحة الإجمالية للموقع</h5>
+                        </div>
+                        <div class="card-body">
+                            <span>أكثر من 6 ملايين متر مربع.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"> 
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-center align-items-center gap-2" style="color: #FEFCF6; font-size: 18px;">
+                            <i class="bi bi-people-fill" style="font-size: 20px;"></i>
+                            <h5>عدد المشاركين المتوقع</h5>
+                        </div>
+                        <div class="card-body">
+                            <span>يُتوقع مشاركة 246 مشارك، من دول ومنظمات عالمية ومشاركين غير رسميين.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-center align-items-center gap-2" style="color: #FEFCF6; font-size: 18px;">
+                            <i class="bi bi-geo-alt-fill" style="font-size: 20px;"></i>
+                            <h5>موقع المعرض</h5>
+                        </div>
+                        <div class="card-body">
+                            <span>سيقام معرض الرياض إكسبو 2030 في شمال الرياض، على بعد حوالي 5-10 دقائق بالسيارة من مطار الملك خالد الدولي.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

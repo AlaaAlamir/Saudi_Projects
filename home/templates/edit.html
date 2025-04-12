@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block title %}التعديل{% endblock %}
+{%block content%}
+
+<style>
+    .container {
+        width: 100%;
+        display:flex;
+        justify-content: center; /* مركز الصف داخل الكونتينر */
+        padding: 20px;
+        box-sizing: border-box;
+        overflow: visible;
+        box-sizing: border-box;
+      }
+    .card {
+        position: relative;
+        display: flex;
+        overflow: visible;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        width: 1000px;
+        padding: 5px;
+        border-radius: 24px;
+        line-height: 1.6;
+        transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+    .input-group {
+        position: relative;
+        align-items: center;
+        align-content: center;
+        display: flex;
+        overflow: visible;
+        margin: 1em 0 1em 0;
+       }
+       .input-group input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #d1cfcf;
+        background-color: transparent;
+        border-bottom-right-radius: 15px;
+      }
+      #ta {
+        font-size: 16px;
+        height: 200px;
+        width: 100%;
+        padding: 10px;
+        background-color: transparent;
+        border: 2px solid #d1cfcf;
+        border-bottom-right-radius: 15px;
+        box-sizing: border-box;
+        resize: vertical;
+    }
+      #bottone1 {
+        padding-left: 33px;
+        padding-right: 33px;
+        padding-bottom: 16px;
+        padding-top: 12px;
+        border-radius: 9px;
+        background: #686868;
+        border: none;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.5s;
+       }
+       
+       #bottone1:hover {
+        box-shadow: 7px 5px 56px -14px #162A2c;
+       }
+       
+       #bottone1:active {
+        transform: scale(0.97);
+        box-shadow: 7px 5px 56px -10px #162A2c;
+       }
+</style>
+
+<div class="container">
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <form action="{% url 'update' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row mt-3">
+                      <div class="col">
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-group">
+                                <input type="hidden" name="id" value="{{ vis.id }}">
+                              <label class="form-label" for="name">الاسم :</label>
+                              <input type="text" class="form-control" name="name" value="{{ vis.name }}">
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="input-group">
+                              <label class="form-label" for="name">التخصص الدراسي أو المهني :</label>
+                              <input type="text" class="form-control" name="specialization" value="{{ vis.specialization }}">
+                              </div> 
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="input-group textarea">
+                        <label class="form-label" for="name">ماهي رؤيتك لعام 2030 :</label>
+                        <textarea id="ta" class="form-control" name="vision_text">{{ vis.vision_text }}</textarea>
+                    </div>
+                      </div>
+                    </div>
+                    <button type="submit" id="bottone1">حفظ</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
